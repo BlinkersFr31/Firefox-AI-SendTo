@@ -26,7 +26,6 @@ function openPage(myUrl,ai_type) {
 }
 
 async function callKutt(url1,ai_type) {
-	debugger;
 	await browser.storage.local.get("urlKutt").then((res) => {
 		console.log("urlKutt :", res.urlKutt);
 		urlKutt=res.urlKutt
@@ -35,8 +34,7 @@ async function callKutt(url1,ai_type) {
 		console.log("apiKeyKutt :", res.apiKeyKutt);
 		apiKeyKutt=res.apiKeyKutt
 	});
-    const apiUrl = 'https://kutt.brondino.fr/api/v2/links';
-
+	
     const data = {
       "target": url1,
       "description": "For perplexity AI",
