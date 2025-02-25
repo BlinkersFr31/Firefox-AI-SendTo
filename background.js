@@ -7,6 +7,13 @@ const perplexity = "Perplexity"
 let urlKutt = "";
 let apiKeyKutt = "";
 
+function removeTrailingSlash(url) {
+    if (url.endsWith('/')) {
+        return url.slice(0, -1);
+    }
+    return url;
+}
+
 function openPage(myUrl,ai_type) {
     let baseUrl = "";
     switch(ai_type) {
@@ -28,7 +35,7 @@ function openPage(myUrl,ai_type) {
 async function callKutt(url1,ai_type) {
 	await browser.storage.local.get("urlKutt").then((res) => {
 		console.log("urlKutt :", res.urlKutt);
-		urlKutt=res.urlKutt
+		urlKutt=removeTrailingSlash(res.urlKutt)
 	});
 	await browser.storage.local.get("apiKeyKutt").then((res) => {
 		console.log("apiKeyKutt :", res.apiKeyKutt);
@@ -42,11 +49,12 @@ async function callKutt(url1,ai_type) {
       "reuse": false
     };
 
-	if (urlKutt === "") {
+	if (urlKutt == undefined || urlKutt === "") {
 		openPage(url1,ai_type);
 	}
 	else {
-		fetch(urlKutt, {
+		const apiKuttUrl = urlKutt + '/api/v2/links'
+		fetch(apiKuttUrl, {
 		  method: 'POST',
 		  headers: {
 			'Content-Type': 'application/json',

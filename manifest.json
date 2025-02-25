@@ -1,6 +1,6 @@
 {
   "name": "Send link to Mistral AI",
-  "version": "0.0.0.1",
+  "version": "0.0.0.3",
   "manifest_version": 2,
   "description": "A browser extension that allow to send a link to Mistral AI.",
   "permissions": [
@@ -26,7 +26,7 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "{3a4de66b-eff0-4b9a-8efe-ddea8d10a0b9}"
+      "id": "{56d0acd1-194a-459c-84c4-afe6270bf031}"
     }
   }
 }
